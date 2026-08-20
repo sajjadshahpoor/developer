@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sajjad Shahpoor — Software Developer</title>
+<meta name="description" content="Sajjad Shahpoor — Software Developer in Brussels. Building Inkbind and full-stack web products. Explore projects, skills, and ways to connect.">
+<meta name="theme-color" content="#0a0e14">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sajjad Shahpoor — Software Developer">
+<meta property="og:description" content="Software Developer in Brussels building Inkbind and full-stack web products.">
+<meta property="og:url" content="https://sajjadshahpoor.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22monospace%22 fill=%22%2364ffda%22>&lt;/&gt;</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<canvas id="bgCanvas"></canvas>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+</button>
+
+<button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open menu" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="layout">
+
+  <!-- LEFT / INTRO PANEL -->
+  <header class="intro" id="intro">
+    <div class="intro-content">
+      <p class="eyebrow reveal">Software Developer</p>
+      <h1 class="reveal">
+        <span class="name-line">Sajjad</span>
+        <span class="name-line gradient-text">Shahpoor</span>
+      </h1>
+      <p class="tagline reveal">
+        I design and build full-stack products —
+        <span class="typewriter" id="typewriter"></span><span class="cursor-blink">|</span>
+      </p>
+      <p class="location reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Brussels, Belgium
+      </p>
+
+      <nav class="intro-nav reveal" aria-label="Primary">
+        <ul>
+          <li><a href="#about" class="nav-link" data-section="about"><span class="nav-line"></span>About</a></li>
+          <li><a href="#skills" class="nav-link" data-section="skills"><span class="nav-line"></span>Skills</a></li>
+          <li><a href="#projects" class="nav-link" data-section="projects"><span class="nav-line"></span>Projects</a></li>
+          <li><a href="#journey" class="nav-link" data-section="journey"><span class="nav-line"></span>Journey</a></li>
+          <li><a href="#github" class="nav-link" data-section="github"><span class="nav-line"></span>GitHub</a></li>
+          <li><a href="#contact" class="nav-link" data-section="contact"><span class="nav-line"></span>Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="intro-actions reveal">
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+      </div>
+
+      <ul class="social-links reveal">
+        <li>
+          <a href="https://github.com/sajjadshahpoor" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.39.97.1-.75.4-1.27.73-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.77.12 3.06.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.28 5.69.42.36.78 1.07.78 2.16v3.2c0 .31.21.66.79.55A10.53 10.53 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/sajjadshahpoor/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:contact@sajjadshahpoor.dev" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- RIGHT / SCROLLABLE CONTENT -->
+  <main class="content">
+
+    <section id="about" class="section">
+      <h2 class="section-heading"><span class="section-num">01.</span> About</h2>
+      <div class="section-body glass-card reveal">
+        <p>
+          I'm a software developer based in Brussels, building products end to end — from
+          backend services to the interfaces people actually touch. My background blends academic
+          computer science with hands‑on, ship‑it‑fast training from
+          <strong> BeCode's</strong> Junior Web Developer bootcamp (AI &amp; DevSecOps track), on top of
+          studies at <strong>Vrije Universiteit Brussel</strong>.
+        </p>
+        <p>
+          Right now most of my energy goes into <strong>Inkbind</strong>, an all‑in‑one PDF toolkit I'm
+          building across web, desktop and mobile. Outside of that I take on freelance builds —
+          business sites, invoicing tools, WordPress plugins — and I still enjoy the occasional
+          detour into compilers and reinforcement learning, just to keep the fundamentals sharp.
+        </p>
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-num" data-count="21">0</span>
+            <span class="stat-label">Public Repos</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="4">0</span>
+            <span class="stat-label">Inkbind Platforms</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-count="8">0</span>
+            <span class="stat-label">Languages Used</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num-text">BE</span>
+            <span class="stat-label">Based in Brussels</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2 class="section-heading"><span class="section-num">02.</span> Skills</h2>
+      <div class="section-body">
+        <div class="skills-grid reveal">
+          <div class="skill-group glass-card">
+            <h3>Languages</h3>
+            <ul class="chip-list">
+              <li>JavaScript</li><li>TypeScript</li><li>PHP</li><li>Python</li><li>Java</li><li>HTML5</li><li>CSS3</li><li>SQL</li>
+            </ul>
+          </div>
+          <div class="skill-group glass-card">
+            <h3>Frameworks &amp; Runtime</h3>
+            <ul class="chip-list">
+              <li>Node.js</li><li>React</li><li>Electron</li><li>React Native</li><li>Express</li><li>REST APIs</li>
+            </ul>
+          </div>
+          <div class="skill-group glass-card">
+            <h3>Platforms &amp; Tools</h3>
+            <ul class="chip-list">
+              <li>WordPress</li><li>Git &amp; GitHub</li><li>Docker</li><li>CI/CD</li><li>Linux</li>
+            </ul>
+          </div>
+          <div class="skill-group glass-card">
+            <h3>Focus Areas</h3>
+            <ul class="chip-list">
+              <li>Full-Stack Development</li><li>DevSecOps</li><li>Applied AI / ML</li><li>Data Visualization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2 class="section-heading"><span class="section-num">03.</span> Projects</h2>
+      <div class="section-body">
+
+        <a class="featured-project glass-card reveal" href="https://github.com/sajjadshahpoor/Inkbind" target="_blank" rel="noopener noreferrer">
+          <div class="featured-project-info">
+            <p class="featured-label">Flagship Product · Actively shipping</p>
+            <h3>Inkbind</h3>
+            <p>
+              A fast, all-in-one PDF toolkit to edit, merge, split and organize documents —
+              built as a connected product across four repositories: web app, desktop app,
+              iOS app and backend server.
+            </p>
+            <ul class="chip-list">
+              <li>JavaScript</li><li>Electron</li><li>iOS</li><li>Node.js</li>
+            </ul>
+            <div class="featured-links">
+              <span class="pill-link">Web ↗</span>
+              <span class="pill-link">Desktop ↗</span>
+              <span class="pill-link">iOS ↗</span>
+              <span class="pill-link">Server ↗</span>
+            </div>
+          </div>
+        </a>
+
+        <div class="project-grid">
+
+          <a class="project-card glass-card reveal" href="https://github.com/sajjadshahpoor/taxioost.be" target="_blank" rel="noopener noreferrer">
+            <div class="project-card-top">
+              <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span class="external-icon">↗</span>
+            </div>
+            <h3>taxioost.be</h3>
+            <p>Business website for a taxi service in Oostende — built and deployed to a live client domain.</p>
+            <ul class="chip-list small"><li>PHP</li><li>Client Site</li></ul>
+          </a>
+
+          <a class="project-card glass-card reveal" href="https://github.com/sajjadshahpoor/AKS-Factuur" target="_blank" rel="noopener noreferrer">
+            <div class="project-card-top">
+              <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span class="external-icon">↗</span>
+            </div>
+            <h3>AKS-Factuur</h3>
+            <p>Custom invoice template system built for a small business client.</p>
+            <ul class="chip-list small"><li>HTML</li><li>CSS</li></ul>
+          </a>
+
+          <a class="project-card glass-card reveal" href="https://github.com/sajjadshahpoor/theafghanvillages-wp" target="_blank" rel="noopener noreferrer">
+            <div class="project-card-top">
+              <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span class="external-icon">↗</span>
+            </div>
+            <h3>The Afghan Villages</h3>
+            <p>Community-focused website, shipped as both a custom WordPress theme and a static build.</p>
+            <ul class="chip-list small"><li>PHP</li><li>WordPress</li></ul>
+          </a>
+
+          <a class="project-card glass-card reveal" href="https://github.com/sajjadshahpoor/Secure_Banking_App" target="_blank" rel="noopener noreferrer">
+            <div class="project-card-top">
+              <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span class="external-icon">↗</span>
+            </div>
+            <h3>Secure Banking App</h3>
+            <p>A banking application concept focused on secure, sensible UX patterns for financial workflows.</p>
+            <ul class="chip-list small"><li>HTML</li><li>Security</li></ul>
+          </a>
+
+          <a class="project-card glass-card reveal" href="https://github.com/sajjadshahpoor/gradient-free-optimization" target="_blank" rel="noopener noreferrer">
+            <div class="project-card-top">
+              <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span class="external-icon">↗</span>
+            </div>
+            <h3>Gradient-Free Optimization</h3>
+            <p>Reinforcement learning project comparing gradient-free optimization methods.</p>
+            <ul class="chip-list small"><li>Python</li><li>Reinforcement Learning</li></ul>
+          </a>
+
+          <a class="project-card glass-card reveal" href="https://github.com/sajjadshahpoor/NYC_Taxi_info_vis" target="_blank" rel="noopener noreferrer">
+            <div class="project-card-top">
+              <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span class="external-icon">↗</span>
+            </div>
+            <h3>NYC Taxi Info Vis</h3>
+            <p>Interactive data visualization exploring New York City taxi trip data.</p>
+            <ul class="chip-list small"><li>Python</li><li>Data Viz</li></ul>
+          </a>
+
+          <a class="project-card glass-card reveal" href="https://github.com/sajjadshahpoor/Wp-tranlator-plugin" target="_blank" rel="noopener noreferrer">
+            <div class="project-card-top">
+              <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span class="external-icon">↗</span>
+            </div>
+            <h3>WP Translator Plugin</h3>
+            <p>A WordPress plugin for translating site content.</p>
+            <ul class="chip-list small"><li>PHP</li><li>WordPress</li></ul>
+          </a>
+
+          <a class="project-card glass-card reveal" href="https://github.com/sajjadshahpoor/yacc_and_lex_calculator" target="_blank" rel="noopener noreferrer">
+            <div class="project-card-top">
+              <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              <span class="external-icon">↗</span>
+            </div>
+            <h3>Yacc &amp; Lex Calculator</h3>
+            <p>A calculator built with Yacc and Lex to explore compiler design fundamentals.</p>
+            <ul class="chip-list small"><li>C</li><li>Compilers</li></ul>
+          </a>
+
+        </div>
+
+        <a class="view-all-link reveal" href="https://github.com/sajjadshahpoor?tab=repositories" target="_blank" rel="noopener noreferrer">
+          View all repositories on GitHub ↗
+        </a>
+      </div>
+    </section>
+
+    <section id="journey" class="section">
+      <h2 class="section-heading"><span class="section-num">04.</span> Journey</h2>
+      <div class="section-body">
+        <ol class="timeline reveal">
+          <li class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <p class="timeline-org">BeCode</p>
+              <p class="timeline-role">Junior Web Developer Bootcamp — AI &amp; DevSecOps Track</p>
+              <p class="timeline-desc">Intensive, project-based training covering full-stack web development, applied AI foundations and DevSecOps practices.</p>
+              <p class="timeline-place">Brussels, Belgium</p>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <p class="timeline-org">Vrije Universiteit Brussel</p>
+              <p class="timeline-role">Computer Science Studies</p>
+              <p class="timeline-desc">Academic foundation in software engineering, algorithms and systems — including coursework in compiler design and refactoring.</p>
+              <p class="timeline-place">Brussels, Belgium</p>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass-card">
+              <p class="timeline-org">Independent / Freelance</p>
+              <p class="timeline-role">Full-Stack Developer</p>
+              <p class="timeline-desc">Building Inkbind and delivering freelance web projects for small businesses and community organizations.</p>
+              <p class="timeline-place">Remote / Brussels</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="github" class="section">
+      <h2 class="section-heading"><span class="section-num">05.</span> GitHub Activity</h2>
+      <div class="section-body reveal">
+        <p class="section-intro">Live stats, pulled straight from GitHub — always current.</p>
+        <div class="github-stats">
+          <img
+            src="https://github-readme-stats.vercel.app/api?username=sajjadshahpoor&show_icons=true&theme=dark&hide_border=true&bg_color=00000000&title_color=64ffda&icon_color=64ffda&text_color=ccd6f6"
+            alt="Sajjad Shahpoor's GitHub stats" loading="lazy">
+          <img
+            src="https://github-readme-streak-stats.herokuapp.com/?user=sajjadshahpoor&theme=dark&hide_border=true&background=00000000&ring=64ffda&fire=64ffda&currStreakLabel=64ffda"
+            alt="Sajjad Shahpoor's GitHub streak" loading="lazy">
+        </div>
+        <div class="github-stats">
+          <img
+            src="https://github-readme-stats.vercel.app/api/top-langs/?username=sajjadshahpoor&layout=compact&theme=dark&hide_border=true&bg_color=00000000&title_color=64ffda&text_color=ccd6f6"
+            alt="Sajjad Shahpoor's most used languages" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-contact">
+      <h2 class="section-heading"><span class="section-num">06.</span> Contact</h2>
+      <div class="section-body reveal">
+        <p class="contact-lead">
+          I'm always open to talking about new projects, freelance work, or interesting ideas.
+          The easiest way to reach me is by email.
+        </p>
+        <a class="btn btn-primary btn-large" href="mailto:contact@sajjadshahpoor.dev">Say Hello ↗</a>
+        <p class="contact-note">
+          (Update this email in <code>index.html</code> to your preferred address before publishing.)
+        </p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Designed &amp; built by Sajjad Shahpoor.</p>
+      <p>© <span id="year"></span> · Deployed on GitHub Pages</p>
+    </footer>
+
+  </main>
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
