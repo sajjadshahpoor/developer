@@ -335,6 +335,12 @@ body::before {
 
 .section-body p { margin-bottom: 1.1rem; max-width: var(--max-content); }
 .section-body.glass-card { padding: 2rem; }
+
+#about .section-body p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
 .section-body strong { color: var(--text-primary); font-weight: 600; }
 
 /* ---------- Stats ---------- */
