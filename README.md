@@ -1,17 +1,20 @@
-# sajjadshahpoor.dev — Developer Portfolio
+# Developer Portfolio — Sajjad SHAHPOOR
 
-Personal portfolio site for **Sajjad Shahpoor**, Software Developer based in Brussels.
+My personal portfolio site. Software Developer based in Brussels, currently building **Inkbind**.
 
-Built as a dependency-free static site (plain HTML / CSS / JS — no build step, no framework) so it can be deployed anywhere instantly, including GitHub Pages.
+Live at: **https://sajjadshahpoor.github.io/developer/**
+
+Built as a dependency-free static site (plain HTML / CSS / JS — no build step, no framework), deployed via GitHub Pages.
 
 ## Features
 
 - Split-screen layout: sticky intro panel + scrolling content sections (About, Skills, Projects, Journey, GitHub activity, Contact)
 - Animated constellation background (canvas particles), respects `prefers-reduced-motion`
-- Dark / light theme toggle with saved preference
+- Dark by default, with a light mode toggle (saved across visits)
 - Scroll-spy navigation, scroll progress bar, reveal-on-scroll animations
 - Typewriter hero tagline, animated stat counters
 - Live GitHub stats/streak/top-languages cards (auto-updating, no maintenance needed)
+- Contact routes straight to LinkedIn
 - Fully responsive, keyboard/focus-accessible
 
 ## Local preview
@@ -32,16 +35,6 @@ assets/
   js/main.js
 ```
 
-## Deploying to GitHub Pages
+## Deployment
 
-1. Push this repo to GitHub (see below).
-2. In the repo, go to **Settings → Pages**.
-3. Under **Build and deployment → Source**, choose **Deploy from a branch**.
-4. Select branch `main`, folder `/ (root)`, then **Save**.
-5. Your site will be live at `https://<your-username>.github.io/<repo-name>/` within a minute or two.
-
-## Before you publish
-
-- Update the placeholder contact email in `index.html` (`mailto:contact@sajjadshahpoor.dev`) to your real address.
-- Double-check the Journey section (BeCode / VUB details) and adjust wording/dates to match your actual timeline.
-- Optionally add a resume/CV link, custom domain (`CNAME` file), or analytics.
+Hosted on GitHub Pages, serving from the `main` branch root. Any push to `main` updates the live site within a minute or two.

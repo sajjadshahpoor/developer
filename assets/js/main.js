@@ -11,14 +11,13 @@
   const themeToggle = document.getElementById('themeToggle');
   const root = document.documentElement;
   const storedTheme = localStorage.getItem('theme');
-  const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
 
   function applyTheme(theme) {
     if (theme === 'light') root.setAttribute('data-theme', 'light');
     else root.removeAttribute('data-theme');
   }
 
-  applyTheme(storedTheme || (systemPrefersLight ? 'light' : 'dark'));
+  applyTheme(storedTheme || 'dark');
 
   themeToggle.addEventListener('click', () => {
     const isLight = root.getAttribute('data-theme') === 'light';

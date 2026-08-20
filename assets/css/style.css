@@ -520,13 +520,6 @@ body::before {
 /* ---------- Contact ---------- */
 .section-contact { text-align: left; }
 .contact-lead { max-width: 480px; font-size: 1.05rem; }
-.contact-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 1rem !important; }
-.contact-note code {
-  font-family: var(--font-mono);
-  background: var(--glass-bg);
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-}
 
 /* ---------- Footer ---------- */
 .site-footer {
