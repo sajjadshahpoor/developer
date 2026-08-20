@@ -505,17 +505,38 @@ body::before {
 .timeline-place { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0 !important; }
 
 /* ---------- GitHub stats ---------- */
-.github-stats {
+.lang-panel {
+  padding: 1.5rem;
+  margin: 1.75rem 0 1.5rem;
+}
+.lang-panel h3 {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 1.1rem;
+}
+.lang-bar-row { margin-bottom: 0.85rem; }
+.lang-bar-row:last-child { margin-bottom: 0; }
+.lang-bar-label {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
 }
-.github-stats img {
-  flex: 1 1 320px;
-  border-radius: var(--radius);
-  max-width: 100%;
+.lang-bar-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--glass-border);
+  overflow: hidden;
 }
+.lang-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+.lang-loading { font-size: 0.85rem; color: var(--text-muted); }
 
 /* ---------- Contact ---------- */
 .section-contact { text-align: left; }

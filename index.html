@@ -107,15 +107,15 @@
         </p>
         <div class="stat-row">
           <div class="stat">
-            <span class="stat-num" data-count="21">0</span>
+            <span class="stat-num" id="aboutRepoCount" data-count="21">0</span>
             <span class="stat-label">Public Repos</span>
           </div>
           <div class="stat">
-            <span class="stat-num" data-count="4">0</span>
+            <span class="stat-num" id="aboutInkbindCount" data-count="4">0</span>
             <span class="stat-label">Inkbind Platforms</span>
           </div>
           <div class="stat">
-            <span class="stat-num" data-count="8">0</span>
+            <span class="stat-num" id="aboutLangCount" data-count="8">0</span>
             <span class="stat-label">Languages Used</span>
           </div>
           <div class="stat">
@@ -162,11 +162,11 @@
       <h2 class="section-heading"><span class="section-num">03.</span> Projects</h2>
       <div class="section-body">
 
-        <a class="featured-project glass-card reveal" href="https://github.com/sajjadshahpoor/Inkbind" target="_blank" rel="noopener noreferrer">
+        <a class="featured-project glass-card reveal" id="featuredProject" href="https://github.com/sajjadshahpoor/Inkbind" target="_blank" rel="noopener noreferrer">
           <div class="featured-project-info">
             <p class="featured-label">Flagship Product · Actively shipping</p>
             <h3>Inkbind</h3>
-            <p>
+            <p class="featured-desc">
               A fast, all-in-one PDF toolkit to edit, merge, split and organize documents —
               built as a connected product across four repositories: web app, desktop app,
               iOS app and backend server.
@@ -183,9 +183,9 @@
           </div>
         </a>
 
-        <div class="project-grid">
+        <div class="project-grid" id="projectGrid">
 
-          <a class="project-card glass-card reveal" href="https://github.com/sajjadshahpoor/taxioost.be" target="_blank" rel="noopener noreferrer">
+          <a class="project-card glass-card reveal in-view" href="https://github.com/sajjadshahpoor/taxioost.be" target="_blank" rel="noopener noreferrer">
             <div class="project-card-top">
               <svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
               <span class="external-icon">↗</span>
@@ -311,20 +311,37 @@
     <section id="github" class="section">
       <h2 class="section-heading"><span class="section-num">05.</span> GitHub Activity</h2>
       <div class="section-body reveal">
-        <p class="section-intro">Live stats, pulled straight from GitHub — always current.</p>
-        <div class="github-stats">
-          <img
-            src="https://github-readme-stats.vercel.app/api?username=sajjadshahpoor&show_icons=true&theme=dark&hide_border=true&bg_color=00000000&title_color=64ffda&icon_color=64ffda&text_color=ccd6f6"
-            alt="Sajjad SHAHPOOR's GitHub stats" loading="lazy">
-          <img
-            src="https://github-readme-streak-stats.herokuapp.com/?user=sajjadshahpoor&theme=dark&hide_border=true&background=00000000&ring=64ffda&fire=64ffda&currStreakLabel=64ffda"
-            alt="Sajjad SHAHPOOR's GitHub streak" loading="lazy">
+        <p class="section-intro">Computed live from the GitHub API on every visit — updates automatically as new repos ship.</p>
+
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-num" id="ghRepoCount" data-count="21">0</span>
+            <span class="stat-label">Public Repos</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" id="ghStarCount" data-count="0">0</span>
+            <span class="stat-label">Total Stars</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num-text" id="ghTopLang">—</span>
+            <span class="stat-label">Most Used Language</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num-text" id="ghLastPush">—</span>
+            <span class="stat-label">Last Shipped</span>
+          </div>
         </div>
-        <div class="github-stats">
-          <img
-            src="https://github-readme-stats.vercel.app/api/top-langs/?username=sajjadshahpoor&layout=compact&theme=dark&hide_border=true&bg_color=00000000&title_color=64ffda&text_color=ccd6f6"
-            alt="Sajjad SHAHPOOR's most used languages" loading="lazy">
+
+        <div class="lang-panel glass-card">
+          <h3>Top Languages</h3>
+          <div class="lang-bars" id="langBars">
+            <p class="lang-loading">Loading live language stats…</p>
+          </div>
         </div>
+
+        <a class="view-all-link" href="https://github.com/sajjadshahpoor" target="_blank" rel="noopener noreferrer">
+          View full GitHub profile &amp; contribution graph ↗
+        </a>
       </div>
     </section>
 

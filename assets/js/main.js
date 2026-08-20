@@ -148,16 +148,26 @@
   const statNums = document.querySelectorAll('.stat-num');
   function animateCount(el) {
     const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    el.dataset.animated = 'true';
     if (prefersReducedMotion) { el.textContent = target; return; }
+    const from = parseInt(el.textContent, 10) || 0;
     const duration = 900;
     const start = performance.now();
     function step(now) {
       const progress = Math.min((now - start) / duration, 1);
-      el.textContent = Math.floor(progress * target);
+      el.textContent = Math.floor(from + (target - from) * progress);
       if (progress < 1) requestAnimationFrame(step);
       else el.textContent = target;
     }
     requestAnimationFrame(step);
+  }
+  // Re-animates a stat once live data arrives, even if it already counted up
+  // once using the static fallback value (About is visible on first paint,
+  // often before the GitHub API response lands).
+  function updateStatCount(el, value) {
+    if (!el) return;
+    el.setAttribute('data-count', value);
+    if (el.dataset.animated === 'true') animateCount(el);
   }
   if ('IntersectionObserver' in window) {
     const statIo = new IntersectionObserver((entries) => {
@@ -170,6 +180,221 @@
     }, { threshold: 0.5 });
     statNums.forEach((el) => statIo.observe(el));
   }
+
+  /* ---------- Live GitHub data (repos, languages, projects) ---------- */
+  const GITHUB_USER = 'sajjadshahpoor';
+
+  // Hand-written blurbs for repos already known when this site was built.
+  // Anything not listed here still renders automatically, using the repo's
+  // own GitHub description (or a generic fallback) — that's what makes new
+  // repos show up on the site without editing any code.
+  const curatedProjects = {
+    'taxioost.be': {
+      displayName: 'taxioost.be',
+      description: 'Business website for a taxi service in Oostende — built and deployed to a live client domain.',
+      tags: ['PHP', 'Client Site']
+    },
+    'AKS-Factuur': {
+      displayName: 'AKS-Factuur',
+      description: 'Custom invoice template system built for a small business client.',
+      tags: ['HTML', 'CSS']
+    },
+    'theafghanvillages-wp': {
+      displayName: 'The Afghan Villages (WordPress)',
+      description: 'Community-focused website, shipped as a custom WordPress theme.',
+      tags: ['PHP', 'WordPress']
+    },
+    'theafghanvillages': {
+      displayName: 'The Afghan Villages',
+      description: 'Community-focused website — static HTML build.',
+      tags: ['HTML']
+    },
+    'Secure_Banking_App': {
+      displayName: 'Secure Banking App',
+      description: 'A banking application concept focused on secure, sensible UX patterns for financial workflows.',
+      tags: ['HTML', 'Security']
+    },
+    'Secure_Banking': {
+      displayName: 'Secure Banking',
+      description: 'Secure banking concept — companion repository.',
+      tags: ['Security']
+    },
+    'gradient-free-optimization': {
+      displayName: 'Gradient-Free Optimization',
+      description: 'Reinforcement learning project comparing gradient-free optimization methods.',
+      tags: ['Python', 'Reinforcement Learning']
+    },
+    'NYC_Taxi_info_vis': {
+      displayName: 'NYC Taxi Info Vis',
+      description: 'Interactive data visualization exploring New York City taxi trip data.',
+      tags: ['Python', 'Data Viz']
+    },
+    'Wp-tranlator-plugin': {
+      displayName: 'WP Translator Plugin',
+      description: 'A WordPress plugin for translating site content.',
+      tags: ['PHP', 'WordPress']
+    },
+    'yacc_and_lex_calculator': {
+      displayName: 'Yacc & Lex Calculator',
+      description: 'A calculator built with Yacc and Lex to explore compiler design fundamentals.',
+      tags: ['C', 'Compilers']
+    }
+  };
+
+  function formatRepoName(name) {
+    return name
+      .replace(/[-_]+/g, ' ')
+      .trim()
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+  }
+
+  function timeAgo(dateStr) {
+    const days = Math.floor((Date.now() - new Date(dateStr).getTime()) / 86400000);
+    if (days <= 0) return 'today';
+    if (days === 1) return 'yesterday';
+    if (days < 30) return days + 'd ago';
+    const months = Math.floor(days / 30);
+    if (months < 12) return months + 'mo ago';
+    return Math.floor(months / 12) + 'y ago';
+  }
+
+  const FOLDER_ICON = '<svg class="folder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>';
+
+  function buildProjectCard(repo) {
+    const curated = curatedProjects[repo.name];
+    const displayName = (curated && curated.displayName) || formatRepoName(repo.name);
+    const description = (curated && curated.description) || repo.description ||
+      `A ${repo.language || 'code'} project — explore the source on GitHub.`;
+    const tags = (curated && curated.tags) || [repo.language, repo.fork ? 'Fork' : null].filter(Boolean);
+    const tagHtml = tags.map((t) => `<li>${t}</li>`).join('');
+    return `
+      <a class="project-card glass-card reveal in-view" href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
+        <div class="project-card-top">
+          ${FOLDER_ICON}
+          <span class="external-icon">↗</span>
+        </div>
+        <h3>${displayName}</h3>
+        <p>${description}</p>
+        <ul class="chip-list small">${tagHtml}</ul>
+      </a>`;
+  }
+
+  function buildFeaturedInkbind(inkbindRepos) {
+    if (!inkbindRepos.length) return;
+    const order = ['inkbind', 'inkbind-desktop', 'inkbind-ios-mob', 'inkbind-server'];
+    const sorted = [...inkbindRepos].sort(
+      (a, b) => order.indexOf(a.name.toLowerCase()) - order.indexOf(b.name.toLowerCase())
+    );
+    const main = sorted.find((r) => r.name.toLowerCase() === 'inkbind') || sorted[0];
+
+    function pillLabel(name) {
+      const n = name.toLowerCase();
+      if (n === 'inkbind') return 'Web';
+      if (n.includes('desktop')) return 'Desktop';
+      if (n.includes('ios')) return 'iOS';
+      if (n.includes('server')) return 'Server';
+      return formatRepoName(name);
+    }
+
+    const featured = document.getElementById('featuredProject');
+    if (!featured) return;
+    const desc = featured.querySelector('.featured-desc');
+    const chips = featured.querySelector('.chip-list');
+    const links = featured.querySelector('.featured-links');
+    if (desc) desc.textContent = main.description ||
+      'A fast, all-in-one PDF toolkit to edit, merge, split and organize documents — built as a connected product across web, desktop, iOS and server.';
+    if (chips) {
+      const langs = [...new Set(sorted.map((r) => r.language).filter(Boolean))];
+      if (langs.length) chips.innerHTML = langs.map((l) => `<li>${l}</li>`).join('');
+    }
+    if (links) {
+      links.innerHTML = sorted
+        .map((r) => `<a class="pill-link" href="${r.html_url}" target="_blank" rel="noopener noreferrer">${pillLabel(r.name)} ↗</a>`)
+        .join('');
+    }
+    featured.href = main.html_url;
+
+    updateStatCount(document.getElementById('aboutInkbindCount'), sorted.length);
+  }
+
+  function renderGitHubStats(repos) {
+    const repoCountEl = document.getElementById('ghRepoCount');
+    const starCountEl = document.getElementById('ghStarCount');
+    const topLangEl = document.getElementById('ghTopLang');
+    const lastPushEl = document.getElementById('ghLastPush');
+    const aboutRepoCountEl = document.getElementById('aboutRepoCount');
+    const aboutLangCountEl = document.getElementById('aboutLangCount');
+    if (!repoCountEl) return;
+
+    const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+    const langCounts = {};
+    repos.forEach((r) => { if (r.language) langCounts[r.language] = (langCounts[r.language] || 0) + 1; });
+    const topLang = Object.entries(langCounts).sort((a, b) => b[1] - a[1])[0];
+    const mostRecent = repos.reduce(
+      (latest, r) => (!latest || new Date(r.pushed_at) > new Date(latest.pushed_at) ? r : latest),
+      null
+    );
+
+    updateStatCount(repoCountEl, repos.length);
+    updateStatCount(starCountEl, totalStars);
+    updateStatCount(aboutRepoCountEl, repos.length);
+    updateStatCount(aboutLangCountEl, Object.keys(langCounts).length);
+    topLangEl.textContent = topLang ? topLang[0] : '—';
+    lastPushEl.textContent = mostRecent ? timeAgo(mostRecent.pushed_at) : '—';
+  }
+
+  function renderLanguageBars(repos) {
+    const container = document.getElementById('langBars');
+    if (!container) return;
+    const counts = {};
+    repos.forEach((r) => { if (r.language) counts[r.language] = (counts[r.language] || 0) + 1; });
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 6);
+    if (!sorted.length) {
+      container.innerHTML = '<p class="lang-loading">No language data available yet.</p>';
+      return;
+    }
+    container.innerHTML = sorted.map(([lang, count]) => {
+      const pct = Math.round((count / total) * 100);
+      return `
+        <div class="lang-bar-row">
+          <div class="lang-bar-label"><span>${lang}</span><span>${pct}%</span></div>
+          <div class="lang-bar-track"><div class="lang-bar-fill" style="width:${pct}%"></div></div>
+        </div>`;
+    }).join('');
+  }
+
+  async function loadGitHubData() {
+    try {
+      const res = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`, {
+        headers: { Accept: 'application/vnd.github+json' }
+      });
+      if (!res.ok) throw new Error('GitHub API error ' + res.status);
+      const repos = await res.json();
+      if (!Array.isArray(repos)) throw new Error('Unexpected GitHub API response');
+
+      renderGitHubStats(repos);
+      renderLanguageBars(repos);
+      buildFeaturedInkbind(repos.filter((r) => /^inkbind/i.test(r.name)));
+
+      const otherRepos = repos
+        .filter((r) => !/^inkbind/i.test(r.name) && r.name.toLowerCase() !== 'developer')
+        .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+        .slice(0, 9);
+      const grid = document.getElementById('projectGrid');
+      if (grid && otherRepos.length) {
+        grid.innerHTML = otherRepos.map(buildProjectCard).join('');
+      }
+    } catch (err) {
+      const langBars = document.getElementById('langBars');
+      if (langBars) {
+        langBars.innerHTML =
+          `<p class="lang-loading">Live stats unavailable right now — <a href="https://github.com/${GITHUB_USER}" target="_blank" rel="noopener noreferrer">view on GitHub</a>.</p>`;
+      }
+    }
+  }
+
+  loadGitHubData();
 
   /* ---------- Particle background ---------- */
   const canvas = document.getElementById('bgCanvas');
