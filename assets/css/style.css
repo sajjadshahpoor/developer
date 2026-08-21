@@ -604,10 +604,15 @@ body::before {
     height: auto;
     width: 100%;
     max-width: 100%;
-    min-height: 100vh;
-    padding-top: 5rem;
+    min-height: auto;
+    align-items: flex-start;
+    padding: 5.5rem 0 2rem;
   }
+  .intro .intro-content { padding: 0; }
   .content { width: 100%; }
+  /* 8rem clears the sticky sidebar on desktop; on stacked mobile the
+     hero above it already provides breathing room. */
+  .section:first-child { padding-top: 2rem; }
   .intro-nav { display: none; }
   .mobile-nav-toggle { display: flex; }
 
